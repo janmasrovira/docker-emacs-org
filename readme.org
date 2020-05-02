@@ -7,3 +7,5 @@
   cd myfolder/
   cask emacs myfile.org --batch -l init.el -f org-latex-export-to-latex --kill
   #+end_example
+
+  Github mirror: [[https://github.com/janmasrovira/docker-emacs-org]].
