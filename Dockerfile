@@ -5,9 +5,6 @@ COPY Cask /home/
 RUN cd /home && \
     cask install
 
-CMD ["emacs"]
-
-
 #-------------------
 
 
@@ -36,5 +33,3 @@ ENV EMACS_BRANCH="emacs-27.0.91"
 ENV EMACS_VERSION="27.0"
 
 ENV PATH="/root/.cask/bin:$PATH"
-
-CMD ["emacs"]
