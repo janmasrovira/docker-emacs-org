@@ -1,7 +1,6 @@
 FROM silex/emacs:27.0-alpine-dev as dev
 
 COPY Cask /home/
-COPY init.el /root/init.el
 
 RUN cd /home && \
     cask install && \
@@ -23,8 +22,9 @@ RUN apk add --no-cache \
   jansson \
   && /bin/true
 
-
 COPY init.sh /root/
+COPY init.el /root/
+
 COPY --from=0 /root/.emacs.d /root/.emacs.d
 COPY --from=0 /home/.cask /home/.cask
 COPY --from=0 /usr/local /usr/local
