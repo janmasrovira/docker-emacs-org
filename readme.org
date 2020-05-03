@@ -3,9 +3,8 @@
 
   It is supposed to work as follows.
   #+begin_example
-  mv /home/Cask /home/.cask /init.el myfolder/
   cd myfolder/
-  cask emacs myfile.org --batch -l init.el -f org-latex-export-to-latex --kill
+  emacs myfile.org -batch -l ~/init.el -f org-latex-export-to-latex --kill
   #+end_example
 
   Github mirror: [[https://github.com/janmasrovira/docker-emacs-org]].

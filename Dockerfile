@@ -1,17 +1,17 @@
 FROM silex/emacs:27.0-alpine-dev as dev
 
 COPY Cask /home/
+COPY init.el /root/init.el
 
 RUN cd /home && \
-    cask install
+    cask install && \
+    cask load-path > /root/load-path
 
 #-------------------
 
 
 FROM alpine:3.9
 
-COPY init.el /home/
-COPY Cask /home/
 
 RUN apk add --no-cache \
   giflib \
@@ -21,15 +21,16 @@ RUN apk add --no-cache \
   librsvg \
   libxpm \
   jansson \
-  python \
   && /bin/true
 
+
+COPY init.sh /root/
 COPY --from=0 /root/.emacs.d /root/.emacs.d
-COPY --from=0 /root/.cask /root/.cask
 COPY --from=0 /home/.cask /home/.cask
 COPY --from=0 /usr/local /usr/local
+COPY --from=0 /root/load-path /root/load-path
 
 ENV EMACS_BRANCH="emacs-27.0.91"
 ENV EMACS_VERSION="27.0"
 
-ENV PATH="/root/.cask/bin:$PATH"
+ENTRYPOINT ["/root/init.sh"]
