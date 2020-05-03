@@ -4,7 +4,7 @@
   It is supposed to work as follows.
   #+begin_example
   cd myfolder/
-  emacs myfile.org -batch -l ~/init.el -f org-latex-export-to-latex --kill
+  emacs myfile.org -batch -l ~/init.el -f org-latex-export-to-latex
   #+end_example
 
   Github mirror: [[https://github.com/janmasrovira/docker-emacs-org]].
