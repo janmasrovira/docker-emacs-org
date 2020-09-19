@@ -1,4 +1,4 @@
-FROM silex/emacs:27.0-alpine-dev as dev
+FROM silex/emacs:27.1-alpine-dev as dev
 
 COPY Cask /home/
 
@@ -28,7 +28,7 @@ COPY --from=0 /home/.cask /home/.cask
 COPY --from=0 /usr/local /usr/local
 COPY --from=0 /root/load-path /root/load-path
 
-ENV EMACS_BRANCH="emacs-27.0.91"
-ENV EMACS_VERSION="27.0"
+ENV EMACS_BRANCH="emacs-27.1"
+ENV EMACS_VERSION="27.1"
 
 ENTRYPOINT ["/root/init.sh"]
