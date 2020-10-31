@@ -8,7 +8,7 @@ RUN cd /home && \
 
 #-------------------
 
-FROM alpine:3.12.1
+FROM alpine:3.9
 
 RUN apk add --no-cache \
   giflib \
