@@ -3,6 +3,7 @@
 (setq org-latex-caption-above nil)
 (princ (format "org-version: %s\n" (org-version)))
 (org-ref-version)
+(setq org-latex-prefer-user-labels t)
 
 ;; Koma-script report
 (add-to-list 'org-latex-classes
