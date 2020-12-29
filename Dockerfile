@@ -1,4 +1,4 @@
-FROM silex/emacs:27.1-alpine-dev as dev
+FROM silex/emacs:27.1-alpine-ci-cask as dev
 
 COPY Cask /home/
 
