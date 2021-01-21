@@ -8,3 +8,15 @@
   #+end_example
 
   Github mirror: [[https://github.com/janmasrovira/docker-emacs-org]].
+
+** Building locally and pushing
+   #+begin_example
+   cd docker-emacs-org
+   docker build . --tag test
+   -- run the image (optional)
+   docker run -it --rm --name testrun test
+   -- tag with final name
+   docker tag test janmasrovira/emacs-org:27.1
+   -- push
+   docker push janmasrovira/emacs-org:27.1
+   #+end_example

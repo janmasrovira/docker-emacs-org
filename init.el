@@ -1,9 +1,7 @@
 (require 'org-ref)
 (setq org-latex-default-packages-alist nil)
-(setq org-latex-caption-above nil)
 (princ (format "org-version: %s\n" (org-version)))
 (org-ref-version)
-(setq org-latex-prefer-user-labels t)
 
 ;; Koma-script report
 (add-to-list 'org-latex-classes
@@ -22,3 +20,23 @@
                ("\\subsubsection{%s}" . "\\subsubsection*{%s}")
                ("\\paragraph{%s}" . "\\paragraph*{%s}")
                ("\\subparagraph{%s}" . "\\subparagraph*{%s}")))
+
+(add-to-list 'org-latex-classes
+             '("letter"
+               "\\documentclass{letter}"
+               ("\\section{%s}" . "\\section*{%s}")
+               ("\\subsection{%s}" . "\\subsection*{%s}")
+               ("\\subsubsection{%s}" . "\\subsubsection*{%s}")))
+
+(add-to-list 'org-latex-classes
+             '("scrletter"
+               "\\documentclass{scrletter}"
+               ("\\section{%s}" . "\\section*{%s}")
+               ("\\subsection{%s}" . "\\subsection*{%s}")
+               ("\\subsubsection{%s}" . "\\subsubsection*{%s}")))
+
+(add-to-list 'load-path "/home/")
+(if (not (require 'custom-org-init nil t))
+    (princ "`custom-org-init' was not found. Using default configuration.")
+  (princ "`custom-org-init' loaded.")
+  )
