@@ -1,24 +1,17 @@
 FROM silex/emacs:27.2-alpine-ci-cask as dev
 
-COPY Cask /home/
+COPY Cask /root/
 
-RUN cd /home && \
+RUN apk add --no-cache \
+     bash
+
+RUN cd /root && \
     cask install && \
     cask load-path > /root/load-path
 
 #-------------------
 
 FROM alpine:3.14.0
-
-RUN apk add --no-cache \
-  giflib \
-  gnupg \
-  lcms2 \
-  libcanberra-gtk3 \
-  librsvg \
-  libxpm \
-  jansson \
-  && /bin/true
 
 # begin locale setup
 ENV MUSL_LOCALE_DEPS cmake make musl-dev gcc gettext-dev libintl
@@ -40,11 +33,11 @@ ENV LC_ALL en_US.UTF-8
 COPY init.sh /root/
 COPY init.el /root/
 
-COPY --from=0 /root/.emacs.d /root/.emacs.d
-COPY --from=0 /home/.cask /home/.cask
-COPY --from=0 /usr/local /usr/local
+COPY --from=0 /root/.cask /root/.cask
+COPY --from=0 /nix/store /nix/store
 COPY --from=0 /root/load-path /root/load-path
 
+ENV PATH="/nix/store/emacs/bin:$PATH"
 ENV EMACS_BRANCH="emacs-27.2"
 ENV EMACS_VERSION="27.2"
 
