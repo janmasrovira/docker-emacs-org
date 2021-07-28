@@ -23,7 +23,7 @@ RUN apk add --no-cache \
   && unzip musl-locales-master.zip \
   && cd musl-locales-master \
   && cmake -DLOCALE_PROFILE=OFF -D CMAKE_INSTALL_PREFIX:PATH=/usr . && make && make install \
-  && cd .. && rm -r musl-locales-master \
+  && cd .. && rm -r musl-locales-master musl-locales-master.zip \
   && apk del $MUSL_LOCALE_DEPS
 
 ENV LANG en_US.UTF-8
@@ -34,6 +34,7 @@ COPY init.sh /root/
 COPY init.el /root/
 
 COPY --from=0 /root/.cask /root/.cask
+# /nix/store contains emacs and all the necessary libraries
 COPY --from=0 /nix/store /nix/store
 COPY --from=0 /root/load-path /root/load-path
 
