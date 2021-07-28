@@ -1,5 +1,5 @@
 * Readme
-  An image that I use to export org files to tex. It includes org-ref.
+  An image that I use to export org files to tex. It includes =org-plus-contrib= and =org-ref=.
 
   It is supposed to work as follows.
   #+begin_example
