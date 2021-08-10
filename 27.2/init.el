@@ -35,6 +35,13 @@
                ("\\subsection{%s}" . "\\subsection*{%s}")
                ("\\subsubsection{%s}" . "\\subsubsection*{%s}")))
 
+(add-to-list 'org-latex-classes
+             '("scrlttr2"
+               "\\documentclass{scrlttr2}"
+               ("\\section{%s}" . "\\section*{%s}")
+               ("\\subsection{%s}" . "\\subsection*{%s}")
+               ("\\subsubsection{%s}" . "\\subsubsection*{%s}")))
+
 (setq org-confirm-babel-evaluate nil)
 (defun load-init-block ()
   (setq block-name "init")
